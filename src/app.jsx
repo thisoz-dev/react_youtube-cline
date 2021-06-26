@@ -12,14 +12,25 @@ function App({ youtube }) {
     setSelectedVideo(video);
   };
 
-  const search = useCallback((query) => {
-    youtube
-      .search(query) //
-      .then((videos) => {
-        setVideos(videos);
-        setSelectedVideo(null);
-      });
-  }, []);
+  const search = useCallback(
+    (query) => {
+      youtube
+        .search(query) //
+        .then((videos) => {
+          setVideos(videos);
+          setSelectedVideo(null);
+        });
+    },
+    [youtube]
+  );
+
+  /* 
+    useCallback은 한 번 만들게되면 메모리상에 계속 보관하고 있기 때문에 메모리에 많은 영향이 갈 수 있다. 
+    자식 컴포넌트에 props를 전달할 때, 계속 새로운 콜백을 전달하면 자식 컴포넌트가 계속 re-reander가 발생할 때 사용하기 적합하다.
+    반면, 자식 컴포넌트가 아니라 간단한 jsx를 이용한 div 태그 또는 button과 같이 새로운 이벤트 데이터가 
+    전달되어도 re-render가 발생하지 않는 요소라면 굳이 useCallback을 사용할 필요가 없다.
+    useCallback을 사용해야할 때를 잘 파악하여 사용하자.
+  */
 
   useEffect(() => {
     youtube
