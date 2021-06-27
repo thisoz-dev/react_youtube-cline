@@ -5,8 +5,10 @@ import { faBars, faBell, faSearch, faTh } from '@fortawesome/free-solid-svg-icon
 import { faCaretSquareUp } from '@fortawesome/free-regular-svg-icons';
 import DropDown from '../dropdown/dropdown';
 
-const SearchHeader = memo(({ onSearch, clickLogo }) => {
+const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
   const [dropdown, setDropdown] = useState(false);
+  // const [navOpen, setNavOpen] = useState(true);
+
   const inputRef = useRef();
   const handleSearch = () => {
     const value = inputRef.current.value;
@@ -23,15 +25,18 @@ const SearchHeader = memo(({ onSearch, clickLogo }) => {
   };
 
   const onClickLogo = () => {
-    console.log('on click logo');
     clickLogo();
   };
   const onDropdown = (e) => {
     dropdown ? setDropdown(false) : setDropdown(true);
   };
+
+  const onClickMenu = () => {
+    handleMenu();
+  };
   return (
     <header className={styles.header}>
-      <button className={styles.menuBtn}>
+      <button className={styles.menuBtn} onClick={onClickMenu}>
         <FontAwesomeIcon icon={faBars} className={styles.menuIcon} />
       </button>
 
@@ -75,7 +80,9 @@ const SearchHeader = memo(({ onSearch, clickLogo }) => {
       </div>
 
       <DropDown isActive={dropdown} />
-      {dropdown && <div className={styles.dropdownBG} onClick={() => setDropdown(false)}></div>}
+      {dropdown && (
+        <div className={styles.dropdownBG} onClick={() => dropdown && setDropdown(false)}></div>
+      )}
     </header>
   );
 });

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import styles from './app.module.css';
+import NavCollapse from './components/nav_collapse/nav_collapse';
+import NavExtend from './components/nav_extend/nav_extend';
 import SearchHeader from './components/search_header/search_header';
 import VideoDetail from './components/video_detail/video_detail';
 import Videolist from './components/video_list/video_list';
@@ -7,6 +9,7 @@ import Videolist from './components/video_list/video_list';
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [navOpen, setNavOpen] = useState(true);
 
   const selectVideo = (video) => {
     setSelectedVideo(video);
@@ -32,6 +35,14 @@ function App({ youtube }) {
         setVideos(videos);
       });
   }, [youtube]);
+
+  const handleMenu = useCallback(
+    (isOpen) => {
+      navOpen ? setNavOpen(false) : setNavOpen(true);
+    },
+    [navOpen]
+  );
+
   /* 
     useCallback은 한 번 만들게되면 메모리상에 계속 보관하고 있기 때문에 메모리에 많은 영향이 갈 수 있다. 
     자식 컴포넌트에 props를 전달할 때, 계속 새로운 콜백을 전달하면 자식 컴포넌트가 계속 re-reander가 발생할 때 사용하기 적합하다.
@@ -48,14 +59,17 @@ function App({ youtube }) {
 
   return (
     <div className={styles.app}>
-      <SearchHeader onSearch={search} clickLogo={clickLogo} />
+      <SearchHeader onSearch={search} clickLogo={clickLogo} handleMenu={handleMenu} />
       <section className={styles.content}>
+        <div className={[styles.aside, navOpen ? styles.extend : styles.collapse].join(' ')}>
+          {navOpen ? <NavExtend /> : <NavCollapse />}
+        </div>
         {selectedVideo && (
           <div className={styles.detail}>
             <VideoDetail video={selectedVideo} />
           </div>
         )}
-        <div className={styles.list}>
+        <div className={[styles.list, navOpen ? styles.extend : styles.collapse].join(' ')}>
           <Videolist
             videos={videos}
             onVideoClick={selectVideo}

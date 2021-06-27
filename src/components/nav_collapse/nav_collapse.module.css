@@ -1,0 +1,31 @@
+.nav_collapse {
+  width: 100%;
+}
+
+.nav_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item_link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  width: 72px;
+  height: 72px;
+  color: #666666;
+}
+
+.item_icon {
+  margin-bottom: 0.2em;
+  font-size: 19px;
+  color: #666666;
+}
+
+.nav_item:hover {
+  background-color: #e9ecef;
+}
