@@ -17,9 +17,9 @@
   padding: 0.5em;
   border-radius: 5px;
   border: 1px solid lightgray;
-  box-shadow: 0 0 8px 0 rgba(223, 223, 223, 0.53);
-  cursor: pointer;
+  background-color: #fff;
   transition: transform 0.1s ease-in;
+  cursor: pointer;
 }
 
 .video:hover {

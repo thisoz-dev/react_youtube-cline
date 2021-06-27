@@ -24,6 +24,14 @@ function App({ youtube }) {
     [youtube]
   );
 
+  const clickLogo = useCallback(() => {
+    selectVideo(null);
+    youtube //
+      .mostPopular()
+      .then((videos) => {
+        setVideos(videos);
+      });
+  }, [youtube]);
   /* 
     useCallback은 한 번 만들게되면 메모리상에 계속 보관하고 있기 때문에 메모리에 많은 영향이 갈 수 있다. 
     자식 컴포넌트에 props를 전달할 때, 계속 새로운 콜백을 전달하면 자식 컴포넌트가 계속 re-reander가 발생할 때 사용하기 적합하다.
@@ -40,7 +48,7 @@ function App({ youtube }) {
 
   return (
     <div className={styles.app}>
-      <SearchHeader onSearch={search} />
+      <SearchHeader onSearch={search} clickLogo={clickLogo} />
       <section className={styles.content}>
         {selectedVideo && (
           <div className={styles.detail}>
