@@ -18,6 +18,10 @@ code {
   text-decoration: none;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
 button {
   cursor: pointer;
   background-color: transparent;

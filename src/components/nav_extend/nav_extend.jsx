@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './nav_extend.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
@@ -12,11 +12,11 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
-const NavExtend = () => {
+const NavExtend = memo(({ clickHome }) => {
   return (
     <div className={styles.nav_extend}>
       <ul className={styles.nav_list}>
-        <li className={styles.nav_item}>
+        <li className={styles.nav_item} onClick={clickHome}>
           <a href="#;" className={styles.item_link}>
             <FontAwesomeIcon className={styles.item_icon} icon={faHome} />홈
           </a>
@@ -67,6 +67,6 @@ const NavExtend = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default NavExtend;

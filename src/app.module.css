@@ -10,6 +10,7 @@
   position: fixed;
   height: 100%;
   background-color: #fff;
+  z-index: 99;
 }
 
 .aside.extend {
@@ -30,10 +31,10 @@
   background-color: #f7f7f7;
   padding: 1rem;
 }
-.list.extend {
+.list.list_extend {
   margin-left: 240px;
 }
-.list.collapse {
+.list.list_collapse {
   margin-left: 72px;
 }
 

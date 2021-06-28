@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './nav_collapse.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
 import { faHome, faCompass, faInbox } from '@fortawesome/free-solid-svg-icons';
 
-const NavCollapse = (props) => {
+const NavCollapse = memo(({ clickHome }) => {
   return (
     <div className={styles.nav_collapse}>
       <ul className={styles.nav_list}>
-        <li className={styles.nav_item}>
+        <li className={styles.nav_item} onClick={clickHome}>
           <a href="#;" className={styles.item_link}>
             <FontAwesomeIcon className={styles.item_icon} icon={faHome} />
             <span>홈</span>
@@ -35,6 +35,6 @@ const NavCollapse = (props) => {
       </ul>
     </div>
   );
-};
+});
 
 export default NavCollapse;

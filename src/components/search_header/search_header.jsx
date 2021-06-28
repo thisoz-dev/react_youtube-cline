@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBell, faSearch, faTh } from '@fortawesome/free-solid-svg-icons';
 import { faCaretSquareUp } from '@fortawesome/free-regular-svg-icons';
 import DropDown from '../dropdown/dropdown';
+import logo from '../../images/logo.png';
+import user from '../../images/user.svg';
 
 const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -41,7 +43,7 @@ const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
       </button>
 
       <div className={styles.logo} onClick={onClickLogo}>
-        <img className={styles.logoImg} src="/images/logo.png" alt="logo" />
+        <img className={styles.logoImg} src={logo} alt="logo" />
         <h1 className={styles.title}>Youtube</h1>
       </div>
 
@@ -75,7 +77,7 @@ const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
           <FontAwesomeIcon icon={faBell} className={`${styles.bellIcon} ${styles.optionIcon}`} />
         </button>
         <div className={styles.profile}>
-          <img className={styles.profileImg} src="/images/user.svg" alt="user profile" />
+          <img className={styles.profileImg} src={user} alt="user profile" />
         </div>
       </div>
 
