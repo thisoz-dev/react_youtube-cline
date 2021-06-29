@@ -1,11 +1,19 @@
 .app {
   width: 100%;
 }
-
 .content {
-  display: flex;
   margin-top: 64px;
+  background-color: #f7f7f7;
 }
+.content.no_home .content_inner {
+  max-width: 1750px;
+  margin: 62px auto 0;
+}
+
+.content_inner {
+  display: flex;
+}
+
 .aside {
   position: fixed;
   height: 100%;
@@ -24,12 +32,15 @@
 
 .detail {
   flex: 1 1 70%;
+  background-color: #f7f7f7;
+  padding: 1em;
+  padding-right: 0;
 }
 
 .list {
   flex: 1 1 30%;
   background-color: #f7f7f7;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .list.list_extend {
   margin-left: 240px;
@@ -39,6 +50,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .detail {
+    padding: 1em;
+  }
   .content {
     flex-direction: column;
   }

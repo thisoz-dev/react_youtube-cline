@@ -1,10 +1,10 @@
 .container {
   width: 50%;
-  padding: 0.3em;
+  /* padding: 0.3em; */
 }
 
 .container.grid {
-  width: 50%;
+  width: 25%;
 }
 
 .container.list {
@@ -13,13 +13,18 @@
 
 .video {
   display: flex;
-  align-items: center;
   padding: 0.5em;
   border-radius: 5px;
-  border: 1px solid lightgray;
-  background-color: #fff;
   transition: transform 0.1s ease-in;
   cursor: pointer;
+}
+.container.grid .video {
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+.container.list .video {
+  flex-direction: row;
 }
 
 .video:hover {
@@ -28,23 +33,44 @@
 }
 
 .thumbnail {
-  width: 40%;
   height: 100%;
   border-radius: 5px;
 }
 
-.metadata {
+.container.grid .thumbnail {
+  margin-bottom: 0.8em;
+  width: 100%;
+}
+.container.list .thumbnail {
+  width: 40%;
+}
+.container.grid .metadata {
+  height: 70px;
+}
+.container.list .metadata {
   margin-left: 1em;
 }
 
 .title,
 .channel {
   margin: 0;
-  font-size: 0.8em;
+}
+.title {
+  display: -webkit-box;
+  max-height: 2.8em;
+  margin-bottom: 0.6em;
+  font-weight: bold;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .channel {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 
 /* @media */

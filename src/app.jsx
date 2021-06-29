@@ -64,30 +64,32 @@ function App({ youtube }) {
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search} clickLogo={moveHome} handleMenu={handleMenu} />
-      <section className={styles.content}>
-        {isHome && (
-          <div className={`${styles.aside} ${navOpen ? styles.extend : styles.collapse}`}>
-            {navOpen ? <NavExtend clickHome={moveHome} /> : <NavCollapse clickHome={moveHome} />}
-          </div>
-        )}
-        {!isHome && (
-          <div>
-            <NavSlide slideNav={slideNav} handleMenu={handleMenu} />
-          </div>
-        )}
+      <section className={`${styles.content} ${!isHome && styles.no_home}`}>
+        <div className={styles.content_inner}>
+          {isHome && (
+            <div className={`${styles.aside} ${navOpen ? styles.extend : styles.collapse}`}>
+              {navOpen ? <NavExtend clickHome={moveHome} /> : <NavCollapse clickHome={moveHome} />}
+            </div>
+          )}
+          {!isHome && (
+            <div>
+              <NavSlide slideNav={slideNav} handleMenu={handleMenu} />
+            </div>
+          )}
 
-        {selectedVideo && (
-          <div className={styles.detail}>
-            <VideoDetail video={selectedVideo} />
+          {selectedVideo && (
+            <div className={styles.detail}>
+              <VideoDetail video={selectedVideo} />
+            </div>
+          )}
+          <div className={`${styles.list} ${isHome && listType}`}>
+            <Videolist
+              videos={videos}
+              onVideoClick={selectVideo}
+              display={selectedVideo ? 'list' : 'grid'}
+              hideNavControl={hideNavControl}
+            />
           </div>
-        )}
-        <div className={`${styles.list} ${isHome && listType}`}>
-          <Videolist
-            videos={videos}
-            onVideoClick={selectVideo}
-            display={selectedVideo ? 'list' : 'grid'}
-            hideNavControl={hideNavControl}
-          />
         </div>
       </section>
     </div>
