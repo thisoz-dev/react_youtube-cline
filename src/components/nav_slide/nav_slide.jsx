@@ -12,6 +12,7 @@ const NavSlide = memo(({ slideNav, handleMenu }) => {
   const toggleClass = slideNav
     ? `${styles.nav_slide_wrap} ${styles.active}`
     : styles.nav_slide_wrap;
+
   const bgToggle = slideNav ? `${styles.nav_bg}` : `${styles.nav_bg} ${styles.hidden}`;
   const clickMenu = () => {
     handleMenu();
@@ -33,7 +34,7 @@ const NavSlide = memo(({ slideNav, handleMenu }) => {
           <NavExtend />
         </div>
       </div>
-      <div className={bgToggle}></div>
+      <div className={bgToggle} onClick={clickMenu}></div>
     </div>
   );
 });

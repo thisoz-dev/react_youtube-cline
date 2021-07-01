@@ -11,6 +11,11 @@
   width: 100%;
   height: 100%;
 }
+.title {
+  margin-top: 0.8em;
+  font-weight: normal;
+  margin-bottom: 0.5em;
+}
 .description {
   white-space: pre-wrap;
 }
