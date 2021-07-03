@@ -30,6 +30,17 @@ function App({ youtube }) {
     [youtube]
   );
 
+  const channel = useCallback(
+    (channelId) => {
+      youtube
+        .channels(channelId) //
+        .then((channelId) => {
+          channel(channelId[0].snippet);
+        });
+    },
+    [youtube]
+  );
+
   const moveHome = useCallback(() => {
     setIsHome(true);
     selectVideo(null);
@@ -68,18 +79,18 @@ function App({ youtube }) {
         <div className={styles.content_inner}>
           {isHome && (
             <div className={`${styles.aside} ${navOpen ? styles.extend : styles.collapse}`}>
-              {navOpen ? <NavExtend clickHome={moveHome} /> : <NavCollapse clickHome={moveHome} />}
+              {navOpen ? <NavExtend /> : <NavCollapse clickHome={moveHome} />}
             </div>
           )}
           {!isHome && (
             <div>
-              <NavSlide slideNav={slideNav} handleMenu={handleMenu} />
+              <NavSlide slideNav={slideNav} handleMenu={handleMenu} clickHome={moveHome} />
             </div>
           )}
 
           {selectedVideo && (
             <div className={styles.detail}>
-              <VideoDetail video={selectedVideo} />
+              <VideoDetail video={selectedVideo} youtube={youtube} />
             </div>
           )}
           <div className={`${styles.list} ${isHome && listType}`}>

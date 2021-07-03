@@ -12,11 +12,15 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
-const NavExtend = memo(({ clickHome }) => {
+const NavExtend = memo(({ clickHome, handleMenu }) => {
+  const onClickHome = () => {
+    clickHome();
+    handleMenu();
+  };
   return (
     <div className={styles.nav_extend}>
       <ul className={styles.nav_list}>
-        <li className={styles.nav_item} onClick={clickHome}>
+        <li className={styles.nav_item} onClick={onClickHome}>
           <a href="#;" className={styles.item_link}>
             <FontAwesomeIcon className={styles.item_icon} icon={faHome} />홈
           </a>

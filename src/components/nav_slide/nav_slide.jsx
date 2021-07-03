@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../images/logo.png';
 
-const NavSlide = memo(({ slideNav, handleMenu }) => {
+const NavSlide = memo(({ slideNav, handleMenu, clickHome }) => {
   const reload = () => {
     window.location.reload();
   };
@@ -31,7 +31,7 @@ const NavSlide = memo(({ slideNav, handleMenu }) => {
           </div>
         </div>
         <div className={styles.nav_content}>
-          <NavExtend />
+          <NavExtend clickHome={clickHome} handleMenu={handleMenu} />
         </div>
       </div>
       <div className={bgToggle} onClick={clickMenu}></div>

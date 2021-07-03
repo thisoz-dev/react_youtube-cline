@@ -53,7 +53,7 @@
   .detail {
     padding: 1em;
   }
-  .content {
+  .content_inner {
     flex-direction: column;
   }
 }
