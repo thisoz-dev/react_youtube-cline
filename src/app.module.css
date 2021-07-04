@@ -35,6 +35,8 @@
   background-color: #f7f7f7;
   padding: 1em;
   padding-right: 0;
+  position: relative;
+  width: 70%;
 }
 
 .list {
@@ -52,6 +54,7 @@
 @media screen and (max-width: 768px) {
   .detail {
     padding: 1em;
+    width: 100%;
   }
   .content_inner {
     flex-direction: column;

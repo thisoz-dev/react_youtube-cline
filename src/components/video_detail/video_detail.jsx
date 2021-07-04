@@ -3,6 +3,8 @@ import styles from './video_detail.module.css';
 
 const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
   const [channel, setChannel] = useState(null);
+  const [moreClick, setMoreClick] = useState(false);
+
   useEffect(() => {
     youtube
       .channels(snippet.channelId) //
@@ -15,9 +17,13 @@ const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
   const viewCountUnit = (view) => {
     return view.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
-
   const tags = snippet.tags;
 
+  const moreBtnType = moreClick ? styles.desc_shortly : styles.desc_more;
+  const descToggle = moreClick ? styles.open : styles.close;
+  const moreClickHandle = () => {
+    moreClick ? setMoreClick(false) : setMoreClick(true);
+  };
   return (
     <section className={styles.detail}>
       <div className={styles.detail_inner}>
@@ -33,15 +39,17 @@ const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
         ></iframe>
       </div>
       <div className={styles.video_info}>
-        <div className={styles.video_tags}>
-          {tags !== undefined &&
-            tags.map((tag, idx) => {
-              return (
-                <span className={styles.video_tag} key={idx}>
-                  #{tag}
-                </span>
-              );
-            })}
+        <div className={styles.video_tags_wrap}>
+          <div className={styles.video_tags}>
+            {tags !== undefined &&
+              tags.map((tag, idx) => {
+                return (
+                  <span className={styles.video_tag} key={idx}>
+                    #{tag}
+                  </span>
+                );
+              })}
+          </div>
         </div>
         <h2 className={styles.video_title}>{snippet.title}</h2>
         <p className={styles.video_state}>
@@ -55,18 +63,28 @@ const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
             <img src={channel[0].snippet.thumbnails.default.url} alt="" />
           </div>
           <div className={styles.channel_info}>
-            <h3 className={styles.channel_title}>{snippet.channelTitle}</h3>
-            <span className={styles.subscriber_count}>
-              구독자{' '}
-              {channel[0].statistics.subscriberCount > 10000
-                ? channel[0].statistics.subscriberCount.slice(0, -4) + '만'
-                : channel[0].statistics.subscriberCount}
-              명
-            </span>
+            <div className={styles.channel_bio}>
+              <h3 className={styles.channel_title}>{snippet.channelTitle}</h3>
+              <span className={styles.subscriber_count}>
+                구독자{' '}
+                {channel[0].statistics.subscriberCount > 10000
+                  ? channel[0].statistics.subscriberCount.slice(0, -4) + '만'
+                  : channel[0].statistics.subscriberCount}
+                명
+              </span>
+            </div>
+            <button className={styles.btn_subscribe}>구독</button>
           </div>
         </div>
       )}
-      <pre className={styles.description}>{snippet.description}</pre>
+      <div className={styles.desc_wrap}>
+        <div className={`${styles.desc_pre_wrap} ${descToggle}`}>
+          <pre className={styles.desc}>{snippet.description}</pre>
+        </div>
+        <span className={moreBtnType} onClick={moreClickHandle}>
+          {moreClick ? '간략히' : '더보기'}
+        </span>
+      </div>
     </section>
   );
 };
