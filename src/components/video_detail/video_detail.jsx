@@ -4,7 +4,6 @@ import styles from './video_detail.module.css';
 const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
   const [channel, setChannel] = useState(null);
   const [moreClick, setMoreClick] = useState(false);
-
   useEffect(() => {
     youtube
       .channels(snippet.channelId) //
@@ -13,7 +12,6 @@ const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
       });
   }, [snippet, youtube]);
 
-  const viewCount = statistics.viewCount;
   const viewCountUnit = (view) => {
     return view.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -52,10 +50,14 @@ const VideoDetail = ({ video, video: { snippet, statistics }, youtube }) => {
           </div>
         </div>
         <h2 className={styles.video_title}>{snippet.title}</h2>
-        <p className={styles.video_state}>
-          <span className={styles.view_count}>조회수 {viewCountUnit(viewCount)}회</span> ∙
-          <span className={styles.published_at}></span> {snippet.publishedAt.slice(0, 10)}
-        </p>
+        {statistics && (
+          <p className={styles.video_state}>
+            <span className={styles.view_count}>
+              조회수 {viewCountUnit(statistics.viewCount)}회
+            </span>{' '}
+            ∙<span className={styles.published_at}></span> {snippet.publishedAt.slice(0, 10)}
+          </p>
+        )}
       </div>
       {channel && (
         <div className={styles.channel}>

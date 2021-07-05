@@ -20,11 +20,12 @@ function App({ youtube }) {
 
   const search = useCallback(
     (query) => {
+      setSelectedVideo(null);
+
       youtube
         .search(query) //
         .then((videos) => {
           setVideos(videos);
-          setSelectedVideo(null);
         });
     },
     [youtube]
