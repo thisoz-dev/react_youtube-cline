@@ -1,7 +1,7 @@
 ✨ react-create-app 으로 제작한 유튜브 클론 프로젝트 입니다.
 
-첫 리액트 프로젝트입니다.
 
+[첫 리액트 프로젝트 / 싱글 페이지]
 
 배포: https://thisoz-dev.github.io/react_youtube-clone/
 
@@ -12,10 +12,14 @@
 
 
 
-
-### THISOZ YOUTUBE Project.
-- 함수형 컴포넌트와 React Hook을 통한 상태관리
+### THISOZ YOUTUBE Project
+- 함수형 컴포넌트와 React Hooks을 통한 상태관리
 - Youtube API, Postman 을 통한 API 
   * 검색기능(search), 영상정보(videos), 채널정보(channels)
 - PostCSS 를 통한 CSS 모듈화
 - .env 파일을 이용한 환경 변수 설정 (API Key 암호화)
+- GitHub Pages를 이용한 배포 (gh-pages)
+- node.js 를 통한 git 관리!
+
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/85509993/124476796-3e24a800-ddde-11eb-837f-767b000a3203.gif)
