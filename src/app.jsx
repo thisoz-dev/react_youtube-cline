@@ -79,7 +79,11 @@ function App({ youtube }) {
         <div className={styles.content_inner}>
           {isHome && (
             <div className={`${styles.aside} ${navOpen ? styles.extend : styles.collapse}`}>
-              {navOpen ? <NavExtend /> : <NavCollapse clickHome={moveHome} />}
+              {navOpen ? (
+                <NavExtend clickHome={moveHome} handleMenu={handleMenu} />
+              ) : (
+                <NavCollapse clickHome={moveHome} />
+              )}
             </div>
           )}
           {!isHome && (

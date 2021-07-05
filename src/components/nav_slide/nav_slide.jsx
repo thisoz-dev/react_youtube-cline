@@ -15,6 +15,7 @@ const NavSlide = memo(({ slideNav, handleMenu, clickHome }) => {
 
   const bgToggle = slideNav ? `${styles.nav_bg}` : `${styles.nav_bg} ${styles.hidden}`;
   const clickMenu = () => {
+    clickHome();
     handleMenu();
   };
   return (

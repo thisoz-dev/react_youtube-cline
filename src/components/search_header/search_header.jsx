@@ -9,7 +9,7 @@ import user from '../../images/user.svg';
 
 const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
   const [dropdown, setDropdown] = useState(false);
-  // const [navOpen, setNavOpen] = useState(true);
+  const [inputState, setInputState] = useState(false);
 
   const inputRef = useRef();
   const handleSearch = () => {
@@ -36,6 +36,14 @@ const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
   const onClickMenu = () => {
     handleMenu();
   };
+
+  const searchFocus = (e) => {
+    setInputState(true);
+  };
+  const searchFocusOut = () => {
+    setInputState(false);
+  };
+  const searchState = inputState ? `${styles.search} ${styles.active}` : `${styles.search}`;
   return (
     <header className={styles.header}>
       <button className={styles.menuBtn} onClick={onClickMenu}>
@@ -54,6 +62,8 @@ const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
           type="search"
           placeholder="Search..."
           onKeyPress={onKeyPress}
+          onFocus={searchFocus}
+          onBlur={searchFocusOut}
         />
         <button className={styles.searchBtn} type="submit" onClick={onClick}>
           <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
@@ -65,19 +75,18 @@ const SearchHeader = memo(({ onSearch, clickLogo, handleMenu }) => {
           className={`${styles.upload} ${styles.optionBtn} ${dropdown && styles.active}`}
           onClick={onDropdown}
         >
-          <FontAwesomeIcon
-            icon={faCaretSquareUp}
-            className={`${styles.uploadIcon} ${styles.optionIcon}`}
-          />
+          <FontAwesomeIcon icon={faCaretSquareUp} className={`${styles.optionIcon}`} />
         </button>
-        <button className={`${styles.etcBtn} ${styles.optionBtn}`}>
+        <button className={styles.optionBtn}>
           <FontAwesomeIcon icon={faTh} className={`${styles.etcIcon} ${styles.optionIcon}`} />
         </button>
-        <button className={`${styles.bellBtn} ${styles.optionBtn}`}>
+        <button className={styles.optionBtn}>
           <FontAwesomeIcon icon={faBell} className={`${styles.bellIcon} ${styles.optionIcon}`} />
         </button>
         <div className={styles.profile}>
-          <img className={styles.profileImg} src={user} alt="user profile" />
+          <a href="https://github.com/thisoz-dev" target="_blank">
+            <img className={styles.profileImg} src={user} alt="user profile" />
+          </a>
         </div>
       </div>
 
