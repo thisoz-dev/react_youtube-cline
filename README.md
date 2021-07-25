@@ -2,6 +2,7 @@
 
 
 [첫 리액트 프로젝트 / 싱글 페이지]
+
 배포: https://thisoz-dev.github.io/react_youtube-clone/
 
 
@@ -20,6 +21,6 @@
 - GitHub Pages를 이용한 배포 (gh-pages)
 - node.js 를 통한 git 관리!
 
----
+
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/85509993/124476796-3e24a800-ddde-11eb-837f-767b000a3203.gif)
