@@ -12,7 +12,7 @@
 
 
 
-### THISOZ YOUTUBE Project
+### Yujeong's YOUTUBE Project
 - 함수형 컴포넌트와 React Hooks을 통한 상태관리
 - Youtube API, Postman 을 통한 API 
   * 검색기능(search), 영상정보(videos), 채널정보(channels)
