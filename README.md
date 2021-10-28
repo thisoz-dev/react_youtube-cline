@@ -3,7 +3,7 @@
 
 [첫 리액트 프로젝트 / 싱글 페이지]
 
-배포: https://thisoz-dev.github.io/react_youtube-clone/
+배포: https://thisyujeong.github.io/react_youtube-clone/
 
 
 
